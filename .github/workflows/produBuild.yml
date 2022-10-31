@@ -1,13 +1,12 @@
-name: Ensure Dev Code is QAed
+name: Production Build test
 
 on:
-  push:
   pull_request:
     branches:
       - master
 
 jobs:
-  test-ci-job:
+  Test-Build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -23,3 +22,12 @@ jobs:
 
       - name: Test coverage
         run: npm run test:coverage
+
+      - name: Build
+        run: npm run build
+
+      - name: Execute Build
+        run: cd build && node index.js
+
+      - name: Upload results
+        run: npm run upload
