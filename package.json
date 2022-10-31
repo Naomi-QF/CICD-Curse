@@ -7,14 +7,21 @@
     "build": "npm run test && tsc",
     "build2": "npm run test:coverage && tsc",
     "test": "cd src && jest --",
-    "scan": "sonar-scanner.bat -D\"sonar.projectKey=CICD_curse\" -D\"sonar.sources=.\" -D\"sonar.host.url=http://127.0.0.1:9000\" -D\"sonar.login=sqp_e683bcd64272248134acf04c2d1b9af7ec0c5a4f\""
+    "test:coverage": "jest --coverage --watchAll=false",
+    "lint": "eslint --cache . --ext ts,tsx",
+    "scan": "sonar-scanner.bat -D\"sonar.projectKey=CICD_curse\" -D\"sonar.sources=.\" -D\"sonar.host.url=http://127.0.0.1:9000\" -D\"sonar.login=sqp_e683bcd64272248134acf04c2d1b9af7ec0c5a4f\"",
+    "prepare": "husky install"
   },
   "author": "Blad",
   "license": "MIT",
   "devDependencies": {
     "@types/jest": "^29.2.0",
+    "@typescript-eslint/eslint-plugin": "^5.41.0",
+    "@typescript-eslint/parser": "^5.41.0",
+    "eslint": "^8.26.0",
     "ts-jest": "^29.0.3",
-    "typescript": "^4.8.4"
+    "typescript": "^4.8.4",
+    "husky": "^8.0.0"
   },
   "dependencies": {
     "axios": "^1.1.3",
